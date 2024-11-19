@@ -27,7 +27,7 @@ exports.mostrarCliente = async (req, res, next) => {
     const cliente = await Clientes.findById(req.params.idCliente);
 
     if(!cliente){
-        res.json({mensaje: 'Ese cliente no existe'});
+        res.json({mensaje : 'Ese cliente no existe'});
         next();
     }
 
@@ -36,10 +36,20 @@ exports.mostrarCliente = async (req, res, next) => {
 
 exports.actualizarCliente = async (req, res, next) => {
     try {
-        const cliente = await Clientes.findByIdAndUpdate({ _id : req.params.idCliente}, req.body, {
+        const cliente = await Clientes.findByIdAndUpdate({ _id : req.params.idCliente }, req.body, {
             new : true
         });
         res.json(cliente);
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+}
+
+exports.eliminarCliente = async (req, res, next) => {
+    try {
+        await Clientes.findOneAndDelete({ _id : req.params.idCliente });
+        res.json({mensaje : 'El cliente se ha eliminado'});
     } catch (error) {
         console.log(error);
         next();
