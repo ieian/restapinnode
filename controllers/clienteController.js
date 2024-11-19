@@ -25,11 +25,23 @@ exports.mostrarClientes = async (req, res, next) => {
 
 exports.mostrarCliente = async (req, res, next) => {
     const cliente = await Clientes.findById(req.params.idCliente);
-    
+
     if(!cliente){
         res.json({mensaje: 'Ese cliente no existe'});
         next();
     }
 
     res.json(cliente);
+}
+
+exports.actualizarCliente = async (req, res, next) => {
+    try {
+        const cliente = await Clientes.findByIdAndUpdate({ _id : req.params.idCliente}, req.body, {
+            new : true
+        });
+        res.json(cliente);
+    } catch (error) {
+        console.log(error);
+        next();
+    }
 }

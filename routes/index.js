@@ -12,5 +12,8 @@ module.exports = function() {
     // Muestra un cliente en especifico (ID)
     router.get('/clientes/:idCliente', clienteController.mostrarCliente);
 
+    // Actualizar cliente
+    router.put('/clientes/:idCliente', clienteController.actualizarCliente);
+
     return router;
 }
