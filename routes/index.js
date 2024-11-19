@@ -20,5 +20,22 @@ module.exports = function() {
     // Eliminar un cliente por su id
     router.delete('/clientes/:idCliente', clienteController.eliminarCliente);
 
+    //-----------------------------------------------------------------------//
+
+    // Nuevos productos
+    router.post('/productos',productosController.subirArchivo, productosController.nuevoProducto);
+
+    // Obten todos los productos
+    router.get('/productos', productosController.mostrarProductos);
+
+    // Muestra un producto en especifico (ID)
+    router.get('/productos/:idProductos', productosController.mostrarProducto);
+
+    // Actualizar un producto por su id
+    router.put('/productos/:idProductos', productosController.actualizarProducto);
+
+    // Eliminar un producto por su id
+    router.delete('/productos/:idProductos', productosController.eliminarProducto);
+
     return router;
 }
