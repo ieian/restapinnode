@@ -28,7 +28,7 @@ exports.mostrarCliente = async (req, res, next) => {
 
     if(!cliente){
         res.json({mensaje : 'Ese cliente no existe'});
-        next();
+        return next();
     }
 
     res.json(cliente);

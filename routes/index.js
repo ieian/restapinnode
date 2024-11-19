@@ -29,13 +29,13 @@ module.exports = function() {
     router.get('/productos', productosController.mostrarProductos);
 
     // Muestra un producto en especifico (ID)
-    router.get('/productos/:idProductos', productosController.mostrarProducto);
+    router.get('/productos/:idProducto', productosController.mostrarProducto);
 
     // Actualizar un producto por su id
-    router.put('/productos/:idProductos', productosController.actualizarProducto);
+    router.put('/productos/:idProducto', productosController.actualizarProducto);
 
     // Eliminar un producto por su id
-    router.delete('/productos/:idProductos', productosController.eliminarProducto);
+    router.delete('/productos/:idProducto', productosController.eliminarProducto);
 
     return router;
 }

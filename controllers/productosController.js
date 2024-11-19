@@ -1,6 +1,5 @@
 const router = require('express');
 const Productos = require('../models/Productos');
-
 const multer = require('multer');
 const shortid = require('shortid');
 
@@ -65,7 +64,7 @@ exports.mostrarProducto = async (req, res, next) => {
 
     if(!producto){
         res.json({mensaje : 'Ese producto no existe'});
-        next();
+        return next();
     }
 
     res.json(producto);
