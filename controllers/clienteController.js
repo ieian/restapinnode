@@ -12,3 +12,13 @@ exports.nuevoCliente = async (req, res) => {
         next();
     }
 }
+
+exports.mostrarClientes = async (req, res, next) => {
+    try {
+        const cliente = await Clientes.find({});
+        res.json(cliente);
+    } catch (error) {
+        console.log(error);
+        next();
+    }
+}

@@ -3,7 +3,8 @@ const router = express.Router();
 const clienteController = require('../controllers/clienteController');
 
 module.exports = function() {
-    router.post('/cliente', clienteController.nuevoCliente);
+    router.post('/clientes', clienteController.nuevoCliente);
 
+    router.get('/clientes', clienteController.mostrarClientes);
     return router;
 }
