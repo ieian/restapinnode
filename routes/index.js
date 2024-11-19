@@ -1,13 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const clienteController = require('../controllers/clienteController');
 
 module.exports = function() {
-    router.get('/', (req, res) => {
-        res.send('inicio')
-    });
-    router.get('/nosotros', (req, res) => {
-        res.send('nosotros')
-    });
+    router.post('/cliente', clienteController.nuevoCliente);
 
     return router;
 }
