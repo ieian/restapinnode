@@ -72,9 +72,19 @@ exports.mostrarProducto = async (req, res, next) => {
 
 exports.actualizarProducto = async (req, res, next) => {
     try {
-        const producto = await Productos.findByIdAndUpdate({ _id : req.params.idProducto }, req.body, {
-            new : true
+        let nuevoProducto = req.body;
+
+        if(req.file) {
+            nuevoProducto.imagen = req.file.filename;
+        } else {
+            let productoAnterior = await Productos.findById(req.params.idProducto);
+            nuevoProducto.imagen = productoAnterior.imagen;
+        }
+
+        let producto = await Productos.findOneAndUpdate({_id : req.params.idProducto}, nuevoProducto, {
+            new : true,
         });
+
         res.json(producto);
     } catch (error) {
         console.log(error);

@@ -32,7 +32,7 @@ module.exports = function() {
     router.get('/productos/:idProducto', productosController.mostrarProducto);
 
     // Actualizar un producto por su id
-    router.put('/productos/:idProducto', productosController.actualizarProducto);
+    router.put('/productos/:idProducto',productosController.subirArchivo, productosController.actualizarProducto);
 
     // Eliminar un producto por su id
     router.delete('/productos/:idProducto', productosController.eliminarProducto);
