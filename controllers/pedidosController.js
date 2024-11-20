@@ -42,10 +42,13 @@ exports.mostrarPedido = async (req, res, next) => {
 
 exports.actualizarPedido = async (req, res, next) => {
     try {
-        const cliente = await Clientes.findByIdAndUpdate({ _id : req.params.idCliente }, req.body, {
+        const pedido = await Pedidos.findByIdAndUpdate({ _id : req.params.idPedido }, req.body, {
             new : true
+        }).populate('cliente').populate({
+            path: 'pedido.producto',
+            model: 'Productos'
         });
-        res.json(cliente);
+        res.json(pedido);
     } catch (error) {
         console.log(error);
         next();
@@ -54,8 +57,8 @@ exports.actualizarPedido = async (req, res, next) => {
 
 exports.eliminarPedido = async (req, res, next) => {
     try {
-        await Clientes.findOneAndDelete({ _id : req.params.idCliente });
-        res.json({mensaje : 'El cliente se ha eliminado'});
+        await Pedidos.findOneAndDelete({ _id : req.params.idPedido });
+        res.json({mensaje : 'El pedido se ha eliminado'});
     } catch (error) {
         console.log(error);
         next();
