@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const pedidosSchema = new Schema({
-    clientes: {
+    cliente: {
         type: Schema.ObjectId,
         ref: 'Clientes'
     },

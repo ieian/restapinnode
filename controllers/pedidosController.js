@@ -15,8 +15,11 @@ exports.nuevoPedido = async (req, res) => {
 
 exports.mostrarPedidos = async (req, res, next) => {
     try {
-        const cliente = await Clientes.find({});
-        res.json(cliente);
+        const pedidos = await Pedidos.find({}).populate('cliente').populate({
+            path: 'pedido.producto',
+            model: 'Productos'
+        });
+        res.json(pedidos);
     } catch (error) {
         console.log(error);
         next();

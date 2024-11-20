@@ -44,17 +44,19 @@ module.exports = function() {
 
     //----------------------------PEDIDOS-------------------------------------//
 
+    // Agrega nuevos pedidos
     router.post('/pedidos', pedidosController.nuevoPedido);
 
+    // Mostrar todos los pedidos
     router.get('/pedidos', pedidosController.mostrarPedidos);
 
-    // Muestra un producto en especifico (ID)
+    // Muestra un pedido en especifico (ID)
     router.get('/pedidos/:idPedido', pedidosController.mostrarPedido);
 
-    // Actualizar un producto por su id
+    // Actualizar un pedido por su id
     router.put('/pedidos/:idPedido', pedidosController.actualizarPedido);
 
-    // Eliminar un producto por su id
+    // Eliminar un pedido por su id
     router.delete('/pedidos/:idPedido', pedidosController.eliminarPedido);
 
     return router;
