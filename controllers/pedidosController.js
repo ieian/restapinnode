@@ -27,14 +27,17 @@ exports.mostrarPedidos = async (req, res, next) => {
 }
 
 exports.mostrarPedido = async (req, res, next) => {
-    const cliente = await Clientes.findById(req.params.idCliente);
+    const pedido = await Pedidos.findById(req.params.idPedido).populate('cliente').populate({
+        path: 'pedido.producto',
+        model: 'Productos'
+    });
 
-    if(!cliente){
-        res.json({mensaje : 'Ese cliente no existe'});
+    if(!pedido){
+        res.json({mensaje : 'Ese pedido aun no existe'});
         return next();
     }
 
-    res.json(cliente);
+    res.json(pedido);
 }
 
 exports.actualizarPedido = async (req, res, next) => {
