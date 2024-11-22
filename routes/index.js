@@ -14,7 +14,7 @@ module.exports = function() {
     router.post('/clientes', clienteController.nuevoCliente);
 
     // Obten todos los clientes
-    router.get('/clientes', auth, clienteController.mostrarClientes);
+    router.get('/clientes', clienteController.mostrarClientes);
 
     // Muestra un cliente en especifico (ID)
     router.get('/clientes/:idCliente', clienteController.mostrarCliente);
@@ -28,7 +28,7 @@ module.exports = function() {
     //----------------------------PRODUCTOS-----------------------------------//
 
     // Nuevos productos
-    router.post('/productos',productosController.subirArchivo, productosController.nuevoProducto);
+    router.post('/productos', productosController.subirArchivo, productosController.nuevoProducto);
 
     // Obten todos los productos
     router.get('/productos', productosController.mostrarProductos);
@@ -37,7 +37,7 @@ module.exports = function() {
     router.get('/productos/:idProducto', productosController.mostrarProducto);
 
     // Actualizar un producto por su id
-    router.put('/productos/:idProducto',productosController.subirArchivo, productosController.actualizarProducto);
+    router.put('/productos/:idProducto', productosController.subirArchivo, productosController.actualizarProducto);
 
     // Eliminar un producto por su id
     router.delete('/productos/:idProducto', productosController.eliminarProducto);

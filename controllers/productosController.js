@@ -33,7 +33,7 @@ exports.subirArchivo = (req, res, next) => {
 
 const upload = multer(configuracionMulter).single('imagen');
 
-exports.nuevoProducto = async (req, res) => {
+exports.nuevoProducto = async (req, res, next) => {
     const producto = new Productos(req.body);
 
     try{
